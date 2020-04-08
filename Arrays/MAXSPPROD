@@ -1,0 +1,38 @@
+//https://www.interviewbit.com/problems/maxspprod/
+public class Solution {
+    public int maxSpecialProduct(int[] A) {
+         int lsv = 0;
+ int rsv = 0;
+ int max =0;
+int start =0;
+int end = 0;
+int flag = 0;
+        for( end=1; end<A.length-1; end++){
+    if (A[start]>A[end]){
+            lsv = start;
+            flag = 1;
+    }
+    if(A[end-1]>A[end]){
+        start = end-1;
+        lsv = start;
+        flag = 1;
+    }
+    if(flag ==0) {
+        start = start+1;
+    }
+    
+    if (A[end+1]>A[end]){
+            rsv = end+1;
+    }
+    
+    if(lsv*rsv >max){
+        max = lsv*rsv;
+    }
+    lsv = 0;
+    rsv = 0;
+    flag =0;
+}
+
+return (int) (max % 1000000007);
+    }
+}
